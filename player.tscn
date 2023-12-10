@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://biillhg4o83qg"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_2afq0"]
+[ext_resource type="Texture2D" uid="uid://tio0hq5pwsai" path="res://character.png" id="2_hrj3n"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="2_s3wqe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xdq5"]
+size = Vector2(12, 27)
+
+[sub_resource type="Gradient" id="Gradient_1vjk2"]
+offsets = PackedFloat32Array(0, 0.83557)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0aomx"]
+gradient = SubResource("Gradient_1vjk2")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.465812)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijip0"]
+size = Vector2(14, 29)
+
+[node name="Node2D" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_2afq0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-5.00002, -2.99994)
+scale = Vector2(1.35938, 1.17188)
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+script = ExtResource("2_s3wqe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_hrj3n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1, 2.5)
+shape = SubResource("RectangleShape2D_7xdq5")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-0.5, 0.500003)
+scale = Vector2(1.35938, 1.17188)
+color = Color(0.756863, 0.756863, 0.643137, 1)
+texture = SubResource("GradientTexture2D_0aomx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 2.5)
+shape = SubResource("RectangleShape2D_ijip0")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

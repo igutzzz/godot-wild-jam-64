@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://gwcbaunm7rna"]
+
+[ext_resource type="Script" path="res://light.gd" id="1_81gjt"]
+[ext_resource type="Texture2D" uid="uid://d0gyv507txoa" path="res://Novo Projeto.png" id="1_n5oe4"]
+
+[node name="Light" type="Node2D" groups=["light"]]
+script = ExtResource("1_81gjt")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_n5oe4")
+
+[node name="Sprite2D" type="Sprite2D" parent="PointLight2D"]
+visible = false
+texture = ExtResource("1_n5oe4")
+
+[node name="Area2D" type="Area2D" parent="." groups=["light"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-2, -52, -49, 50, 48, 50)
