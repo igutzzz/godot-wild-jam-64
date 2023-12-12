@@ -24,9 +24,10 @@ size = Vector2(14, 29)
 script = ExtResource("1_2afq0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-5.00002, -2.99994)
+position = Vector2(-1, 1)
 scale = Vector2(1.35938, 1.17188)
-zoom = Vector2(3, 3)
+zoom = Vector2(3.5, 3.5)
+limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("2_s3wqe")
 
